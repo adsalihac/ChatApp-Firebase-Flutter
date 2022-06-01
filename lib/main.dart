@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:chatapp/screens/welcome_screen.dart';
-import 'package:chatapp/screens/login_screen.dart';
-import 'package:chatapp/screens/registration_screen.dart';
-import 'package:chatapp/screens/chat_screen.dart';
+import '../screens/welcome_screen.dart';
+import '../screens/login_screen.dart';
+import '../screens/registration_screen.dart';
+import '../screens/chat_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';

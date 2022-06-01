@@ -1,6 +1,10 @@
+import 'package:chatapp/screens/login_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -14,6 +18,39 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
 
+  final _auth = FirebaseAuth.instance;
+  late User loggedInUser;
+
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  Future<void> getCurrentUser() async {
+    try {
+      final user = _auth.currentUser;
+      if(user != null) {
+        loggedInUser = user;
+      }
+    } on FirebaseAuthException catch (e) {
+      // if (e.code == 'weak-password') {
+      //   snakeBarMsg('The password provided is too weak.');
+      // } else if (e.code == 'email-already-in-use') {
+      //   snakeBarMsg('The account already exists for that email.');
+      // }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
+  Future<void> logOut() async {
+    await _auth.signOut();
+    Navigator.pushNamed(context, LoginScreen.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +62,7 @@ class _ChatScreenState extends State<ChatScreen> {
               icon: const Icon(Icons.close),
               onPressed: () {
                 //Implement logout functionality
+                logOut();
               }),
         ],
         title: const Text('⚡️Chat'),
