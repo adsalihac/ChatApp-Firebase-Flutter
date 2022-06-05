@@ -22,8 +22,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   final _auth = FirebaseAuth.instance;
-  late String email = "abc@gmail.com";
-  late String password = "123123";
+  late String email = "";
+  late String password = "";
   bool showLoading = false;
 
 
