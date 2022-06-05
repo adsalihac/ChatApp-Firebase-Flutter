@@ -1,7 +1,7 @@
 # chatapp
 
 ## webApp
-(https://chat-flutter-bfa87.web.app/)
+https://chat-flutter-bfa87.web.app/
 
 ## Getting Started
 
